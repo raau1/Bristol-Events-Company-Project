@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events in Bristol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar bg-light px-4 position-relative">
+    <div class="container-fluid nav-grid align-items-center">
+  
+      <!-- logo -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="images/BECc.png" alt="Logo" width="40" height="40">
+      </a>
+  
+      <!-- hamburger toggle (mobile) -->
+      <button id="mobileMenuBtn" class="d-md-none border-0 bg-transparent ms-auto" aria-label="Toggle menu">
+        &#9776;
+      </button>
+  
+      <div id="mobileMenu" class="d-md-none mobile-menu d-none">
+        <a class="nav-link" href="#events">EVENTS</a>
+        <a class="nav-link" href="#">MAP</a>
+        <a class="nav-link" href="#">FORUM</a>
+        <a id="mobileUserAction" class="nav-link" href="login.html">Sign Up / Login</a>
+        <a id="mobileProfileLink" class="nav-link d-none" href="profile.html">Profile</a>
+        <a id="mobileLogout" class="nav-link d-none" href="#">Log out</a>
+      </div>
+  
+      <!-- regular navbar links (desktop) -->
+      <div class="navbar-center d-none d-md-flex gap-4">
+        <a class="nav-link" href="#events">EVENTS</a>
+        <a class="nav-link" href="#">MAP</a>
+        <a class="nav-link" href="#">FORUM</a>
+      </div>
+  
+      <!-- user section (desktop) -->
+        <div class="navbar-user-section d-none d-md-flex align-items-center gap-3">
+            <a id="navUserAction" class="nav-link flex-shrink-0" href="login.html">Sign Up / Login</a>
+        <div id="userDropdown" class="dropdown" style="display:none">
+            <img src="images/default-pfp.png" alt="Profile" width="36" height="36" class="rounded-circle dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="cursor:pointer;">
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a class="dropdown-item" href="profile.html">Profile</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#" id="logoutBtn">Log out</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</nav>
+    
+
+<!-- HERO -->
+<section class="hero d-flex align-items-center text-center">
+    <div class="container">
+        <h1 class="hero-title">Discover Upcoming Events in Bristol!</h1>
+    </div>
+</section>
+
+<!-- FILTER -->
+<div class="container mb-4" id="filterArea">
+    <button id="filterToggle"
+            class="btn btn-filter-bar w-100 d-flex justify-content-between align-items-center">
+    <span>Filter Events</span>
+    <span id="filterArrow">▾</span>
+    </button>
+
+    <div id="filterBox" class="card bg-light p-3 mt-2 d-none">
+    <h5><strong>Refine by Category</strong>
+        <button class="btn btn-sm btn-secondary ms-3" id="clearFilters">Clear</button>
+    </h5>
+
+    <div class="border p-3 mb-3">
+        <div class="row g-2">
+        <div class="col-12">
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="concert"><label class="form-check-label" for="concert">Concert</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="exhibition"><label class="form-check-label" for="exhibition">Exhibition</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="festival"><label class="form-check-label" for="festival">Festival</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="workshop"><label class="form-check-label" for="workshop">Workshop</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="livePerformance"><label class="form-check-label" for="livePerformance">Live Performance</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="culture"><label class="form-check-label" for="culture">Culture</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="music"><label class="form-check-label" for="music">Music</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="outdoors"><label class="form-check-label" for="outdoors">Outdoors</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="indoors"><label class="form-check-label" for="indoors">Indoors</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="familyFriendly"><label class="form-check-label" for="familyFriendly">Family Friendly</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="ticketed"><label class="form-check-label" for="ticketed">Ticketed</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="free"><label class="form-check-label" for="free">Free</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="art"><label class="form-check-label" for="art">Art</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="sustainability"><label class="form-check-label" for="sustainability">Sustainability</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="technology"><label class="form-check-label" for="technology">Technology</label></div>
+            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="foodDrink"><label class="form-check-label" for="foodDrink">Food & Drink</label></div>
+        </div>
+        </div>
+    </div>
+
+    <h5><strong>Search parameters</strong></h5>
+    <div class="row g-2">
+        <div class="col-md-6"><input type="text" class="form-control" id="titleFilter" placeholder="Title contains..."></div>
+        <div class="col-md-6"><input type="text" class="form-control" id="descFilter" placeholder="Description contains..."></div>
+    </div>
+    <div class="text-end mt-3"><button class="btn btn-dark" id="applyFilters">Apply</button></div>
+    </div>
+</div>
+
+<!-- EVENT CARDS -->
+<div id="events" class="container mb-5">
+<div id="eventContainer" class="row gx-4 gy-4 justify-content-center">
+
+    <div class="col-md-3">
+    <div
+        class="card event-card h-100 text-center"
+        data-tags="music,festival,outdoors"
+        data-desc="Bristols iconic waterfront turns into an alfresco dance-floor every Friday in July for Harbourside Summer Beats.  Expect an eclectic line-up that drifts from laid-back acoustic sets at golden hour to feel-good funk bands and late-night DJ takeovers as the sun dissolves behind the cranes.  Independent brewers, vegan street-food vendors and neon art installations line the cobbles, while giant beanbags and deckchairs invite you to kick back between acts.  The event is plastic-free, family-friendly until 8 pm and completely free, making it the perfect warm-up to the citys legendary festival season.">
+        <div class="card-header">Harbourside Summer Beats</div>
+        <img src="images/ev1.jpg" class="card-img-top" alt="Crowd dancing at a harbourside concert at sunset.">
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div
+        class="card event-card h-100 text-center"
+        data-tags="art,exhibition,indoors"
+        data-desc="Trace the story of Bristols most mysterious son on a two-hour Banksy Street-Art Tour led by local graffiti historians.  Starting at the famous Mild Mild West mural, you'll wander hidden alleyways and bustling markets to uncover both classic and lesser-known works, all peppered with insider anecdotes, urban-art lore and discussion on how street art shapes public space.  The walk finishes at a pop-up gallery featuring rotating pieces by emerging spray-can talents who draw inspiration from the elusive artist.  Bring comfy shoes, a camera and an open mind— political satire and playful stencils await around every corner.">
+        <div class="card-header">Banksy Street Art Tour</div>
+        <img src="images/ev2.jpg" class="card-img-top" alt="Guide pointing at a Banksy mural on a brick wall.">
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div
+        class="card event-card h-100 text-center"
+        data-tags="foodDrink,festival,free"
+        data-desc="Sample more than 100 mouth-watering dishes from Bristol's diverse culinary scene at the annual Foodie Festival on College Green.  From West Country cheeses and artisan sourdough to Jamaican jerk wraps, Vietnamese pho and zero-waste cocktails, there is genuinely something for every palate.  Live cook-along demos with local TV chefs run throughout the day alongside family pancake-flipping races and a chilli-eating contest for the brave.  Entry is free; just purchase tasting tokens or bring your own picnic blanket and graze as you please while enjoying acoustic sets on the solar-powered community stage.">
+        <div class="card-header">Bristol Foodie Festival</div>
+        <img src="images/ev3.jpg" class="card-img-top" alt="Visitors sampling street-food stalls on College Green.">
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div
+        class="card event-card h-100 text-center"
+        data-tags="concert,music,livePerformance"
+        data-desc="The Louisiana's upstairs room— tiny, sweaty and legendary— hosts an intimate triple-bill showcasing the next wave of indie rock.  Doors open at 7 pm for local dream-pop newcomers Moon Harbour, followed by Welsh punk-poets Tulip Crisis and a headline set from NME-tipped Avalon Drive.  Capacity is only 120, so you'll be inches from the action, wrapped in vintage red velvet curtains and history: past performers include The Strokes, Florence & the Machine and Idles.  Craft lager is on tap downstairs and the venue sits two minutes from Wapping Wharf for pre-gig street-food.  Strictly 14+.">
+        <div class="card-header">Live at the Louisiana</div>
+        <img src="images/ev4.jpg" class="card-img-top" alt="Small venue gig with blue back-lighting and crowd close to stage.">
+    </div>
+    </div>
+
+    <!-- second row -->
+
+    <div class="col-md-3">
+    <div
+        class="card event-card h-100 text-center"
+        data-tags="familyFriendly,workshop,art"
+        data-desc="Ignite imaginations at Arnolfini's Family Art Workshop where children age 5-12 collaborate with resident artists to create anything from recycled-paper sculptures to giant collaborative canvases inspired by the current exhibition.  Sessions start with a playful gallery tour using story cards and texture scavenger hunts, followed by an hour in the light-filled studio overlooking the harbour.  All materials are included, aprons supplied and grown-ups are encouraged to get messy too.  Completed masterpieces are paraded in a mini pop-up show before families take them home.  Booking essential; pa-what-you-feel donations support community outreach.">
+        <div class="card-header">Family Art Workshop at Arnolfini</div>
+        <img src="images/ev5.jpg" class="card-img-top" alt="Children painting large colourful canvas with parents assisting.">
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div
+        class="card event-card h-100 text-center"
+        data-tags="technology,workshop,ticketed"
+        data-desc="Always wanted to code but never knew where to start?  Bristol CodeHub's Intro-to-Coding bootcamp condenses the essentials of HTML, CSS and JavaScript into a friendly Saturday workshop.  You'll build a mini portfolio site, learn how the web fits together and leave with resources for continued self-study.  Laptops are provided, coffee and doughnuts flow freely and mentors roam the room to troubleshoot.  No previous experience needed— the only prerequisite is curiosity.  The day ends with lightning talks from local devs on real-world projects and a networking happy hour overlooking Castle Park.">
+        <div class="card-header">Intro to Coding with Bristol CodeHub</div>
+        <img src="images/ev6.jpg" class="card-img-top" alt="People typing on laptops at coding workshop.">
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div
+        class="card event-card h-100 text-center"
+        data-tags="sustainability,free,indoors"
+        data-desc="How can Bristol reach net-zero by 2030?  Hear bold ideas—and debate them—at the Green Future Forum, a free afternoon of panel talks, interactive exhibits and pop-up repair cafés inside the airy M Shed atrium.  Topics range from river-cleaning robots and community energy co-ops to circular-economy fashion.  Bring an appliance for the fix-it stall, sign up for a cargo-bike test ride and plot carbon-footprint reduction on the giant city map.  Kids can build miniature wind turbines in the Renewable Play Zone while adults enjoy organic coffee in compostable cups.">
+        <div class="card-header">Bristol Green Future Forum</div>
+        <img src="images/ev7.jpg" class="card-img-top" alt="Speaker presenting eco-innovation ideas on stage with green backdrop.">
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div
+        class="card event-card h-100 text-center"
+        data-tags="culture,festival,music"
+        data-desc="Bristol's most vibrant street party returns as St Paul's Carnival paints the neighbourhood in Caribbean colours, rhythms and flavours.  From noon, steel-pan orchestras and costumed dance troupes wind through residential streets turned into impromptu stages.  Food stalls plate up jerk chicken, vegan ital pots and patties beside rum-punch shacks, while sound systems pump reggae, soca, jungle and grime late into the night.  Community art installations celebrate the Windrush generation, kids craft masks in the Learning Tent and a quiet garden offers reflection on Carnival's political roots.  Free entry; donations support youth art scholarships.">
+        <div class="card-header">St. Paul's Carnival</div>
+        <img src="images/ev8.jpg" class="card-img-top" alt="Feather-costumed dancers at St Paul's Carnival parade.">
+    </div>
+    </div>
+
+    <!-- third row -->
+
+    <div class="col-md-3">
+    <div
+        class="card event-card h-100 text-center"
+        data-tags="outdoors,free,familyFriendly"
+        data-desc="Pack a hamper and unwind beneath centuries-old plane trees at Picnic in Queen Square, a laid-back community gathering that celebrates Bristol's green heart.  Roving folk musicians supply a gentle soundtrack while circus students juggle and poi-spin for spare change.  Face-painting stalls, giant chess and eco-storytelling tents keep little ones entertained.  Dog-owners parade their pups at 3 pms informal 'cutest tail wag' contest, and a sunset silent-disco waltz rounds off the evening.  Everything is free; simply roll out your blanket, say hello to your neighbours and savour a moment of urban calm.">
+        <div class="card-header">Picnic in Queen Square</div>
+        <img src="images/ev9.jpg" class="card-img-top" alt="Families on blankets enjoying picnic under large trees.">
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div
+        class="card event-card h-100 text-center"
+        data-tags="technology,exhibition,indoors"
+        data-desc="Step into surreal digital worlds at VR Art Showcase, a one-night exhibition at Watershed blending traditional craft and immersive tech.  Put on a headset to explore brush-stroke nebulae, walk through an ever-morphing sculpture garden or paint 3D graffiti in mid-air using Tilt Brush.  Alongside each virtual piece sits the artist's physical sketchbook so you can trace the creative journey.  A panel Q&A at 8 pm probes identity and accessibility in virtual spaces, followed by hands-on demos of haptic gloves and 360-degree treadmills.  Tickets include a locally brewed beer or soft drink.">
+        <div class="card-header">VR Art Showcase at  Watershed</div>
+        <img src="images/ev10.jpg" class="card-img-top" alt="Visitor wearing VR headset in gallery space.">
+    </div>
+    </div>
+    
+    <div class="col-md-3">
+    <div
+        class="card event-card h-100 text-center"
+        data-tags="livePerformance,music,ticketed"
+        data-desc="Lose yourself in smoky sax solos and velvet vocals at Jazz Night in the Lantern, Bristol Beacon's intimate Art-Deco hall.  This month's edition pairs Mercury-nominated trumpeter Laura  Jurd with the Bristol Jazz Orchestra for a genre-hopping set that moves from cool-blue ballads to avant-garde grooves.  Candle-lit cabaret tables, table-service cocktails and vintage Edison bulbs create speakeasy vibes, while pre-show vinyl spinning sets the mood.  Students and NHS staff enjoy half-price tickets; arrive early for a free Jazz Appreciation crash-course in the foyer.">
+        <div class="card-header">Jazz Night at Bristol Beacon</div>
+        <img src="images/ev11.jpg" class="card-img-top" alt="Trumpet soloist bathed in red stage lights.">
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div
+        class="card event-card h-100 text-center"
+        data-tags="culture,art,workshop"
+        data-desc="Discover the colour-drenched street-art heritage of Easton while learning to design and paint your own large-scale mural at this hands-on workshop.  Guided by veteran graffiti artist Inkie, participants sketch motifs, cut stencils and master can control before collaborating on a community wall celebrating local histories.  All spray-paint is low-VOC, safety masks are provided and beginners are warmly welcomed.  The day ends with professional photos of the finished piece, pizza from a nearby community oven and tips on how to get involved in future legal wall projects around the city.">
+        <div class="card-header">Mural Making Workshop in Easton</div>
+        <img src="images/ev12.jpg" class="card-img-top" alt="People spray-painting a colourful wall mural.">
+    </div>
+    </div>
+
+
+    <!-- fourth row -->
+
+    <div class="col-md-3">
+        <div
+        class="card event-card h-100 text-center"
+        data-tags="outdoors,familyFriendly,festival"
+        data-desc="Watch the skies come alive at Europe's largest annual hot air balloon event. The Bristol International Balloon Fiesta sees over 100 balloons ascend from Ashton Court Estate, with spectacular night glows set to music. Enjoy fairground rides, craft markets and helicopter joyrides by day, then stay for the breathtaking mass ascent at 6 pm. Pack a picnic or sample local ciders from the Somerset stall. Free entry; parking fees support the event's continuation. Early arrival recommended for prime viewing spots on the historic estate grounds.">
+        <div class="card-header">Bristol International Balloon Fiesta</div>
+        <img src="images/ev13.jpg" class="card-img-top" alt="Colorful hot air balloons ascending at sunset over green fields.">
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div
+        class="card event-card h-100 text-center"
+        data-tags="festival,maritime,free"
+        data-desc="Celebrate Bristol's nautical heritage at the Bristol Harbour Festival, where the floating harbour becomes a stage for tall ships, live music and water sports. Try paddleboarding past historic warehouses, watch acrobatic shanty performances on replica pirate ships, or join a free kayak taster session. The quayside buzzes with seafood stalls, chainsaw woodcarving demos and interactive marine biology exhibits. Don't miss the dramatic Saturday night fireworks reflecting on the water - best viewed from Pero's Bridge.">
+        <div class="card-header">Bristol Harbour Festival</div>
+        <img src="images/ev14.jpg" class="card-img-top" alt="Tall ships docked in harbour with crowds on quayside.">
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div
+        class="card event-card h-100 text-center"
+        data-tags="history,outdoors,tour"
+        data-desc="Go behind the scenes of Brunel's engineering marvel with Clifton Suspension Bridge Trust guides. This 90-minute twilight tour takes small groups across the illuminated bridge before descending into vaulted chambers normally closed to the public. Handle original construction tools, hear tragic Victorian suicide prevention stories, and learn how modern lasers monitor the 214m span. Sturdy footwear required for the 98-step spiral staircase. Tours conclude with mulled wine and mince pies in the heritage centre.">
+        <div class="card-header">Clifton Suspension Bridge Twilight Tour</div>
+        <img src="images/ev15.jpg" class="card-img-top" alt="Illuminated suspension bridge at dusk with city lights beyond.">
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div
+        class="card event-card h-100 text-center"
+        data-tags="foodDrink,market,vegan"
+        data-desc="Taste the plant-based revolution at Bristol Vegan Market's monthly showcase in St Nicholas Market. Over 60 stalls offer cashew cheeses, jackfruit tacos, cruelty-free cosmetics and ethical fashion. Watch live cooking demos using foraged ingredients, enter the 'Guess the Meat Alternative' quiz, and let kids decorate vegan cupcakes in the Sugar Skulls Bakery corner. BYO containers for zero-waste shopping and receive £2 off entry when arriving by bike. First 100 visitors get free goodie bags with local vegan samples.">
+        <div class="card-header">Bristol Vegan Market</div>
+        <img src="images/ev16.jpg" class="card-img-top" alt="Vegan food stall with colorful bowls of plant-based dishes.">
+        </div>
+    </div>
+
+    <!-- fifth row -->
+
+    <div class="col-md-3">
+        <div
+        class="card event-card h-100 text-center"
+        data-tags="theatre,outdoors,culture"
+        data-desc="Experience Shakespeare with a Bristol twist at outdoor performances in Queen Square. This year's Bristol Shakespeare Festival features The Tempest reimagined with storm scenes enhanced by BMX stunt riders and a Merchant of Venice set in the 1980s banking world. Bring folding chairs or rent velvet cushions. Interval ice creams come from local dairy Marshfield Farm, and signed performances occur every Thursday. Pay-What-You-Can nights every Monday support access to the arts.">
+        <div class="card-header">Bristol Shakespeare Festival</div>
+        <img src="images/ev17.jpg" class="card-img-top" alt="Open-air theatre performance in park setting.">
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div
+        class="card event-card h-100 text-center"
+        data-tags="art,festival,free"
+        data-desc="Watch Europe's largest street art festival transform South Bristol over three days. Upfest brings 400 artists from 70 countries to paint live murals across Bedminster's walls. Follow spray-can trails between pubs hosting artist Q&As, try graffiti workshops in East Street Community Centre, and bid in the silent auction for original artwork. The Saturday night block party features beatbox battles and hip-hop karaoke. Free spray paint recycling stations available all weekend.">
+        <div class="card-header">Upfest Street Art Festival</div>
+        <img src="images/ev18.jpg" class="card-img-top" alt="Artist painting large mural on building scaffold.">
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div
+        class="card event-card h-100 text-center"
+        data-tags="foodDrink,festival,ticketed"
+        data-desc="Hops enthusiasts rejoice at the Bristol Craft Beer Festival inside the historic Lloyd Amphitheatre. Sample unlimited ⅓ pints from 150+ breweries including local heroes Left Handed Giant and Arbor Ales. Masterclasses cover sour beer blending, food pairing with cheese guru Ned Palmer, and the science of can design. Soak it all up with loaded fries from the award-winning Low & Slow BBQ. Early bird tickets include commemorative glass and priority access to rare barrel-aged releases.">
+        <div class="card-header">Bristol Craft Beer Festival</div>
+        <img src="images/ev19.jpg" class="card-img-top" alt="Crowd holding craft beer glasses in industrial venue.">
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div
+        class="card event-card h-100 text-center"
+        data-tags="sports,outdoors,charity"
+        data-desc="Join 12,000 runners for Bristol's iconic half marathon through maritime history. The route passes SS Great Britain, Underfall Yard and the Cumberland Basin before finishing on Anchor Road. Live bands every kilometer, including samba drummers at the Suspension Bridge incline. Choose charity bibs supporting Bristol Food Banks or local hospices. Can't run? Volunteer as a marshall dressed as a pirate to match this year's nautical theme. Free post-race massages and vegan recovery shakes for all participants.">
+        <div class="card-header">Bristol Half Marathon</div>
+        <img src="images/ev20.jpg" class="card-img-top" alt="Runners crossing Clifton Suspension Bridge during race.">
+        </div>
+    </div>
+
+    <!-- sixth row -->
+
+    <div class="col-md-3">
+        <div
+        class="card event-card h-100 text-center"
+        data-tags="theatre,livePerformance,ticketed"
+        data-desc="Laugh until your sides ache at Bristol Improv Theatre's Friday Night Showdown. Two teams battle through spontaneous scenes based on audience suggestions - think Whose Line Is It Anyway meets Bristol's comedy underground. BYO drinks (corkage £1), and stick around for the 11 pm 'Improvised Musical' based on a random Wikipedia entry. Student nights every Wednesday offer £5 tickets and free nachos. The intimate 60-seat venue ensures every whispered aside lands perfectly.">
+        <div class="card-header">Bristol Improv Theatre Showdown</div>
+        <img src="images/ev21.jpg" class="card-img-top" alt="Improvisers acting out scene on small stage.">
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div
+        class="card event-card h-100 text-center"
+        data-tags="familyFriendly,workshop,education"
+        data-desc="Spark STEM curiosity at We The Curious' monthly Curiosity Workshops. Kids aged 7-14 build hydraulic robot arms, extract DNA from strawberries, or program Mars rovers using Raspberry Pis. Each 2-hour session links to real Bristol innovations - meet engineers from Airbus Filton or chat with Temple Meads station architects. Adults can explore the main exhibits, including the famous animatronic T-Rex. Family tickets include planetarium shows about Bristol's night sky.">
+        <div class="card-header">Science Workshops at We The Curious</div>
+        <img src="images/ev22.jpg" class="card-img-top" alt="Children building robots in museum workshop.">
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div
+        class="card event-card h-100 text-center"
+        data-tags="charity,outdoors,familyFriendly"
+        data-desc="The undead take over Bristol streets for this annual charity walk supporting Brain Tumour Research. Zombie makeup artists open shop at 10 am in Castle Park (donations welcome), then 2,000 groaning participants shamble past city landmarks. Best dressed wins a film props workshop tour at Bottle Yard Studios. After-party at The Fleece features zombie-themed cocktails and a Dawn of the Dead DJ set. Under-16s must be accompanied by a responsible adult (human or zombie).">
+        <div class="card-header">Bristol Zombie Walk</div>
+        <img src="images/ev23.jpg" class="card-img-top" altCostumed zombies crossing Bristol bridge in daylight.">
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div
+        class="card event-card h-100 text-center"
+        data-tags="market,familyFriendly,festive"
+        data-desc="Twinkling lights and mulled cider await at Bristol Cathedral's Christmas Market. Browse 120 chalet stalls selling handmade jewellery, woolly hats and wooden toys from local makers. The food hall stars mince pie flights, raclette melts and Germany's famed Feuerzangenbowle (flaming rum punch). Kids meet Santa in his vintage Routemaster grotto, then ride the antique carousel. Carol services occur hourly - join the pop-up choir or simply soak in the harmonies beneath gothic arches.">
+        <div class="card-header">Christmas Market at Bristol Cathedral</div>
+        <img src="images/ev24.jpg" class="card-img-top" alt="Christmas market stalls with cathedral illuminated at night.">
+        </div>
+    </div>
+        
+</div>
+
+</div>
+
+<footer class="site-footer py-1">
+</footer>
+  
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

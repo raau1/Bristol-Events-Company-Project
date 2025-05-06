@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profile - Bristol Events</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar bg-light px-4 position-relative">
+    <div class="container-fluid nav-grid align-items-center">
+  
+      <!-- logo -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="images/BECc.png" alt="Logo" width="40" height="40">
+      </a>
+  
+      <!-- hamburger toggle (mobile) -->
+      <button id="mobileMenuBtn" class="d-md-none border-0 bg-transparent ms-auto" aria-label="Toggle menu">
+        &#9776;
+      </button>
+  
+      <div id="mobileMenu" class="d-md-none mobile-menu d-none">
+        <a class="nav-link" href="#events">EVENTS</a>
+        <a class="nav-link" href="#">MAP</a>
+        <a class="nav-link" href="#">FORUM</a>
+        <a id="mobileUserAction" class="nav-link" href="login.html">Sign Up / Login</a>
+        <a id="mobileProfileLink" class="nav-link d-none" href="profile.html">Profile</a>
+        <a id="mobileLogout" class="nav-link d-none" href="#">Log out</a>
+      </div>
+  
+      <!-- regular navbar links (desktop) -->
+      <div class="navbar-center d-none d-md-flex gap-4">
+        <a class="nav-link" href="#events">EVENTS</a>
+        <a class="nav-link" href="#">MAP</a>
+        <a class="nav-link" href="#">FORUM</a>
+      </div>
+  
+      <!-- user section (desktop) -->
+        <div class="navbar-user-section d-none d-md-flex align-items-center gap-3">
+            <a id="navUserAction" class="nav-link flex-shrink-0" href="login.html">Sign Up / Login</a>
+        <div id="userDropdown" class="dropdown" style="display:none">
+            <img src="images/default-pfp.png" alt="Profile" width="36" height="36" class="rounded-circle dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="cursor:pointer;">
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a class="dropdown-item" href="profile.html">Profile</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#" id="logoutBtn">Log out</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</nav>
+
+<!-- PROFILE FORM -->
+<div class="container my-5">
+<h1 class="mb-4">Your Profile</h1>
+<form id="profileForm" class="mx-auto" style="max-width:400px;">
+    2<div class="mb-3">
+    <label for="profileUsername" class="form-label">Display Name</label>
+    <input type="text" id="profileUsername" class="form-control" required>
+    </div>
+    <div class="mb-3">
+    <label for="profileEmail" class="form-label">Email</label>
+    <input type="email" id="profileEmail" class="form-control">
+    </div>
+
+    <div class="mb-3">
+    <label class="form-label d-block">Choose your avatar</label>
+    <div id="avatarPicker" class="avatar-picker d-flex gap-3 flex-wrap">
+        <label class="avatar-option">
+        <input type="radio" name="avatar" value="default-pfp.png">
+        <img src="images/default-pfp.png" alt="Default" class="img-thumbnail">
+        </label>
+        <label class="avatar-option">
+        <input type="radio" name="avatar" value="avatar1.png">
+        <img src="images/avatar1.png" alt="Avatar 1" class="img-thumbnail">
+        </label>
+        <label class="avatar-option">
+        <input type="radio" name="avatar" value="avatar2.png">
+        <img src="images/avatar2.png" alt="Avatar 2" class="img-thumbnail">
+        </label>
+        <label class="avatar-option">
+        <input type="radio" name="avatar" value="avatar3.png">
+        <img src="images/avatar3.png" alt="Avatar 3" class="img-thumbnail">
+        </label>
+    </div>
+    </div>
+    
+    <!-- About Me-->
+    <div class="mb-3">
+        <label for="profileAbout" class="form-label">
+            About Me (max 500 characters)
+        </label>
+        <textarea id="profileAbout"
+                    class="form-control"
+                    rows="4"
+                    maxlength="500"
+                    placeholder="Tell us something about yourself…"></textarea>
+        <div id="aboutCharCount" class="form-text text-end">0/500</div>
+        </div>
+        
+    <button type="submit" class="btn btn-purple w-100">Save Changes</button>
+</form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
