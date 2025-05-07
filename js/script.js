@@ -3,7 +3,7 @@ $(function () {
 /*  Navbar login state */
 const user       = localStorage.getItem('bristolUser');
 const isLoggedIn = Boolean(user);
-
+  
 if (isLoggedIn) {
 	$('#navUserAction')
 	.text('MY ITINERARY')
@@ -198,12 +198,14 @@ if (location.pathname.endsWith('event.html')) {
 		if (!isSaved(ev.title)) setSaved([...getSaved(), ev]);
 		$('#saveBtn').addClass('d-none');
 		$('#removeBtn').removeClass('d-none');
+		alert('Event saved!');
 	});
 
 	$('#removeBtn').off('click').on('click', () => {
 		setSaved(getSaved().filter(e => e.title !== ev.title));
 		$('#removeBtn').addClass('d-none');
 		$('#saveBtn').removeClass('d-none');
+		alert('Event removed.');
 	});
 	}
 
