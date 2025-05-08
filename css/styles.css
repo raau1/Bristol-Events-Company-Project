@@ -394,10 +394,6 @@ h1 {
     flex-direction: column;
   }
 
-  .login-hero {
-    height: 220px;
-  }
-
   .card-img-top {
     height: 140px;
   }
